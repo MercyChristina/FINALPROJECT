@@ -1,0 +1,69 @@
+8.select avg(prevailing_wage),job_title,year,full_time_position from h1b group by job_title,year,full_time_position ;
+ 
+
+63357.0	[HIOX] COMMERCIAL SPECIALIST (SALES ENGINEER)	2011
+51542.0	]ENGINEERING LEAD	2014
+57429.0	  MIDDLEWARE ADMINISTRATION.	2016
+60133.0	 BUSINESS ANALYST	2016
+60674.0	 ORACLE APPS DBA	2015
+55598.0	 SAS ANALYST	2015
+69909.0	 SR. BUSINESS INTELLIGENCE DEVELOPER	2016
+46779.0	 TEAM LEAD - US	2014
+--------------------------------------------------------------------------
+
+9.select employer_name,ROUND((count(*)*100/3002048),2)  as c1 from h1b where case_status="CERTIFIED-WITHDRAWN" or  case_status="CERTIFIED" group by employer_name order by c1 desc limit 10;
+
+INFOSYS LIMITED	4.33
+TATA CONSULTANCY SERVICES LIMITED	2.14
+WIPRO LIMITED	1.58
+DELOITTE CONSULTING LLP	1.2
+ACCENTURE LLP	1.11
+IBM INDIA PRIVATE LIMITED	1.0
+MICROSOFT CORPORATION	0.84                                     
+HCL AMERICA	0.75
+ERNST & YOUNG U.S. LLP	0.6                               
+TECH MAHINDRA (AMERICAS)	0.57
+
+--------------------------------------------------------------------------------
+
+10.select job_title,ROUND((count(*)*100/3002048),2)  as c1 from h1b where case_status="CERTIFIED-WITHDRAWN" or  case_status="CERTIFIED" group by job_title order by c1 desc limit 10;
+
+
+PROGRAMMER ANALYST	4.11
+SOFTWARE DEVELOPERS	3.78
+ APPLICATIONS	3.78
+Software Developers	3.75
+ Applications	3.44
+Computer Systems Analysts	3.39
+ ALL OTHER	3.16
+ All Other	2.95
+Computer Programmers	2.73
+COMPUTER SYSTEMS ANALYSTS	2.36
+--------------------------------------------------------------------------------------------
+
+1a.select job_title,year,count(case_status) from h1b where job_title="DATA ENGINEER" group by year,job_title limit 5;
+
+
+DATA ENGINEER	125008	1
+DATA ENGINEER	2011	1
+DATA ENGINEER	2012	3
+DATA ENGINEER	2013	4
+DATA ENGINEER	2014	10
+
+------------------------------------------------------------------------------------------------------------
+
+1b.select job_title,year,count(case_status) from h1b group by job_title,year order by      job_title desc limit 5;
+
+
+TEAM LEAD - US	2014	2
+ SR. BUSINESS INTELLIGENCE DEVELOPER	2016	1
+ SAS ANALYST	2015	1
+ ORACLE APPS DBA	2015	1
+ LEAD CONSULTANT - US	2013	1
+
+
+
+
+
+
+
